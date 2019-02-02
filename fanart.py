@@ -8,18 +8,17 @@ c.read('config.ini')
 reddit = praw.Reddit(**c['Auth'])
 subreddit = reddit.subreddit(c['Options']['subreddit'])
 
-title = datetime.date.today().strftime('Fanart Wednesday Megathread - Week of %B %d, %Y')
-content = """Weekly thread dedicated to fanarts from our community.
+title = datetime.date.today().strftime('Weekly Fanart Discussion Megathread - Week of %B %d, %Y')
+content = """Weekly thread dedicated to all anime fanarts.
 
-Feel free to post your fanart in this thread. The usual restrictions for /r/anime fanart posts do not apply here, so feel free to share anything you've drawn.
+Feel free to post your fanart in this thread. The usual restrictions for /r/anime fanart posts do not apply here, so feel free to share anything you want to discuss. Other /r/anime rules still apply, so make sure not to post from illegal sources, heavily NSFW content or untagged spoilers.
 
-In particular, you should use this thread to post the following:
+Some examples of things you should post here:
 
 - Sketches and other quick drawings that you'd like to share
 - WIP fanarts that are not yet ready to be posted
-- Fanarts for which you would like advice or feedback
+- Fanarts that you did or found and for which you would like advice or feedback
 - Any fanart that you can't post because your fanart ratio is too high
-- Heavily referenced works that don't count as OC
 
 Out of respect for other artists and to help with constructive criticism, make sure to properly credit and link the original work if you post a fanart that is not your own or heavily inspired from another work.
 """
