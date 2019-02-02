@@ -8,7 +8,7 @@ from datetime import datetime, date, timezone, timedelta
 c = configparser.ConfigParser()
 c.read('config.ini')
 reddit = praw.Reddit(**c['Auth'])
-subreddit = reddit.subreddit('anime')
+subreddit = reddit.subreddit(c['Options']['subreddit'])
 
 # Step 0: get old CDF
 search_str = 'Casual Discussion Fridays'
@@ -25,7 +25,7 @@ print(f'Found old CDF id {old_cdf.id} "{old_cdf.title}"')
 # Step 1: Create new CDF
 title = date.today().strftime('Casual Discussion Fridays - Week of %B %d, %Y')
 content = """
-This is a weekly thread to get to know r/anime’s community. Talk about your day-to-day life, share your hobbies, or make small talk with your fellow anime fans.
+This is a weekly thread to get to know /r/anime's community. Talk about your day-to-day life, share your hobbies, or make small talk with your fellow anime fans.
 
 Although this is a place for off-topic discussion, there are a few rules to keep in mind:
 
