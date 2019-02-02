@@ -57,6 +57,7 @@ A quick note: this thread will remain open for one hour so that you can finish
 your conversations. Please **do not** use this thread for spamming or other
 undesirable behavior. Excessive violations will result in sanctions.
 ''')
+notify_comment.disable_inbox_replies()
 notify_comment.mod.distinguish()
 
 print(f'Posted notify comment {notify_comment.id} in old CDF')
@@ -79,6 +80,7 @@ Don't take the shitpost too far - but have fun!
 
 [](#bot-chan)
 ''')
+last_comment.disable_inbox_replies()
 last_comment.mod.distinguish(sticky=True)
 
 print(f'Last comment {last_comment.id} posted')
