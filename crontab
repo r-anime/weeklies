@@ -2,3 +2,4 @@
 0  0	* * 5	root	cd /weekly && python3 cdf.py >> cdf.log 2>&1
 0  0	* * 1	root	cd /weekly && python3 merch.py >> merch.log 2>&1
 0  0	* * 2	root	cd /weekly && python3 recs.py >> recs.log 2>&1
+0  0	* * 3	root	cd /weekly && python3 fanart.py >> fanart.log 2>&1
