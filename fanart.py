@@ -8,7 +8,7 @@ c.read('config.ini')
 reddit = praw.Reddit(**c['Auth'])
 subreddit = reddit.subreddit(c['Options']['subreddit'])
 
-title = datetime.date.today().strftime('Weekly Fanart Discussion Megathread - Week of %B %d, %Y')
+title = datetime.date.today().strftime('Weekly Fanart Megathread - Week of %B %d, %Y')
 content = """Weekly thread dedicated to all anime fanarts.
 
 Feel free to post your fanart in this thread. The usual restrictions for /r/anime fanart posts do not apply here, so feel free to share anything you want to discuss. Other /r/anime rules still apply, so make sure not to post from illegal sources, heavily NSFW content or untagged spoilers.
