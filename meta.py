@@ -31,6 +31,7 @@ Comments that are detrimental to discussion (aka circlejerks/shitposting) are su
 
 post = subreddit.submit(title, selftext=content)
 post.disable_inbox_replies()
+post.mod.suggested_sort(sort='new')
 post.mod.distinguish()
 post.mod.sticky()
 

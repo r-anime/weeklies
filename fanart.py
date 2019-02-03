@@ -25,6 +25,7 @@ Out of respect for other artists and to help with constructive criticism, make s
 
 post = subreddit.submit(title, selftext=content)
 post.disable_inbox_replies()
+post.mod.suggested_sort(sort='new')
 post.mod.distinguish()
 post.mod.sticky()
 

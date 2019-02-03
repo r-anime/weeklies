@@ -27,6 +27,7 @@ If you'd like to look through the previous WT! threads to find recommendations o
 
 post = subreddit.submit(title, selftext=content)
 post.disable_inbox_replies()
+post.mod.suggested_sort(sort='new')
 post.mod.distinguish()
 post.mod.sticky()
 

@@ -15,6 +15,7 @@ Have a collection you've amassed that you'd like to show off instead? Don't be s
 
 post = subreddit.submit(title, selftext=content)
 post.disable_inbox_replies()
+post.mod.suggested_sort(sort='new')
 post.mod.distinguish()
 post.mod.sticky()
 
