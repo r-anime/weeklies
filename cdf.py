@@ -37,7 +37,7 @@ Although this is a place for off-topic discussion, there are a few rules to keep
 
 4. No meta discussion. If you have a meta concern, please raise it in the Monthly Meta Thread and the moderation team would be happy to help.
 
-5. All r/anime rules, other than the anime-specific requirement, should still be followed.
+5. All /r/anime rules, other than the anime-specific requirement, should still be followed.
 """
 new_cdf = subreddit.submit(title, selftext=content)
 new_cdf.disable_inbox_replies()
