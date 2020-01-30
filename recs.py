@@ -18,11 +18,13 @@ If you'd like to look through the previous WT! threads to find recommendations o
 
 **Not sure how to ask for a recommendation?** Fill this out, or simply use it as a guideline, and other users will find it much easier to recommend you an anime!
 
-*I'm looking for:* A certain genre? Something specific like characters travelling to another world? etc
+*I'm looking for:* A certain genre? Something targeted like characters travelling to another world?
 
-*Shows I've already seen that are similar:*
+*Shows I've already seen that are similar:* You can include a link to a list on another site if you have one, e.g. MyAnimeList or AniList.
 
-*Link to my MAL (or other anime list):* Leave blank if you don't have one.
+**Be specific about what you want!**
+
+Don't have anything particular in mind? [Browse our recommendation wiki](https://www.reddit.com/r/anime/w/recommendations) for some common suggestions.
 """
 
 post = subreddit.submit(title, selftext=content)
