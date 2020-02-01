@@ -11,16 +11,17 @@ reddit = praw.Reddit(**c['Auth'])
 subreddit = reddit.subreddit(c['Options']['subreddit'])
 
 # should only be posted every 4 weeks
-with open(DATE_FILE, 'r') as f:
-    try:
-        last_posted_str = f.read().strip()
-        last_posted = datetime.date.fromisoformat(last_posted_str)
-
-        if datetime.date.today() - last_posted < datetime.timedelta(days=28):
-            print(f'Not submitted (last post: {last_posted_str})')
-            exit()
-    except FileNotFoundError:
-        print(f"Couldn't find {DATE_FILE}, continuing")
+## REMOVED - changed to first Sunday of the month in crontab
+#with open(DATE_FILE, 'r') as f:
+#    try:
+#        last_posted_str = f.read().strip()
+#        last_posted = datetime.date.fromisoformat(last_posted_str)
+#
+#        if datetime.date.today() - last_posted < datetime.timedelta(days=28):
+#            print(f'Not submitted (last post: {last_posted_str})')
+#            exit()
+#    except FileNotFoundError:
+#        print(f"Couldn't find {DATE_FILE}, continuing")
 
 title = datetime.date.today().strftime('Meta Thread - Month of %B %d, %Y')
 content = """A monthly thread to talk about meta topics. Keep it friendly and relevant to the subreddit.
@@ -37,6 +38,6 @@ post.mod.sticky()
 
 print(f'Submitted {post.title}')
 
-with open(DATE_FILE, 'w') as f:
-    f.write(datetime.date.today().isoformat())
-    f.write('\n')
+#with open(DATE_FILE, 'w') as f:
+#    f.write(datetime.date.today().isoformat())
+#    f.write('\n')
