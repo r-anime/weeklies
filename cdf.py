@@ -25,7 +25,7 @@ print(f'Found old CDF id {old_cdf.id} "{old_cdf.title}"')
 # Step 1: Create new CDF
 title = date.today().strftime('Casual Discussion Fridays - Week of %B %d, %Y')
 content = """
-This is a weekly thread to get to know /r/anime's community. Talk about your day-to-day life, share your hobbies, or make small talk with your fellow anime fans.
+This is a weekly thread to get to know /r/anime's community. Talk about your day-to-day life, share your hobbies, or make small talk with your fellow anime fans. The thread is active all week long so hang around even when it's not on the front page!
 
 Although this is a place for off-topic discussion, there are a few rules to keep in mind:
 
