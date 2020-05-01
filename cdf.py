@@ -11,8 +11,7 @@ reddit = praw.Reddit(**c['Auth'])
 subreddit = reddit.subreddit(c['Options']['subreddit'])
 
 # Step 0: get old CDF
-search_str = 'Casual Discussion Fridays'
-#search_str = 'Casual Discussion Fridays author:AutoModerator'
+search_str = 'Casual Discussion Fridays author:AnimeMod'
 cdfs = subreddit.search(search_str, sort='new')
 while True:
     old_cdf = next(cdfs)
