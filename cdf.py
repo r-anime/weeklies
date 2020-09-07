@@ -30,7 +30,7 @@ Although this is a place for off-topic discussion, there are a few rules to keep
 
 1. Be courteous and respectful of other users.
 
-2. Discussion of religion, politics, depression, and other similar topics will be moderated due to their sensitive nature. While we encourage users to talk about their daily lives and get to know others, this thread is not intended for extended discussion of the aforementioned topics or for emotional support.
+2. Discussion of religion, politics, depression, and other similar topics will be moderated due to their sensitive nature. While we encourage users to talk about their daily lives and get to know others, this thread is not intended for extended discussion of the aforementioned topics or for emotional support. **Do not post content falling in this category in spoiler tags and hover text.** This is a public thread, please do not post content if you believe that it will make people uncomfortable or annoy others.
 
 3. Roleplaying is not allowed. This behaviour is not appropriate as it is obtrusive to uninvolved users.
 
