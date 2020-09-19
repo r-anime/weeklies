@@ -8,7 +8,7 @@ c.read('config.ini')
 reddit = praw.Reddit(**c['Auth'])
 subreddit = reddit.subreddit(c['Options']['subreddit'])
 
-title = datetime.date.today().strftime('Weekly Miscellaneous Anime Questions Thread - Week of %B %d, %Y')
+title = datetime.date.today().strftime('Miscellaneous Anime Questions - Week of %B %d, %Y')
 content = """Have any random questions about anime that you want answered, but don't think deserve their own dedicated thread? Or maybe because you think it might just be silly? Then this is the thread for you!
 
 Also [check our FAQ](https://www.reddit.com/r/anime/wiki/faaq).
