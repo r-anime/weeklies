@@ -9,6 +9,7 @@ c = configparser.ConfigParser()
 c.read('config.ini')
 reddit = praw.Reddit(**c['Auth'])
 subreddit = reddit.subreddit(c['Options']['subreddit'])
+flair_id = c['Options']['flair_weekly_id']
 
 # Step 0: get old CDF
 search_str = 'Casual Discussion Fridays author:AnimeMod'
@@ -38,7 +39,7 @@ Although this is a place for off-topic discussion, there are a few rules to keep
 
 5. All /r/anime rules, other than the anime-specific requirement, should still be followed.
 """
-new_cdf = subreddit.submit(title, selftext=content)
+new_cdf = subreddit.submit(title, selftext=content, flair_id=flair_id)
 new_cdf.disable_inbox_replies()
 new_cdf.mod.distinguish()
 new_cdf.mod.sticky()

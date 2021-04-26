@@ -9,6 +9,7 @@ c.read('config.ini')
 
 reddit = praw.Reddit(**c['Auth'])
 subreddit = reddit.subreddit(c['Options']['subreddit'])
+flair_id = c['Options']['flair_meta_id']
 
 # should only be posted every 4 weeks
 ## REMOVED - changed to first Sunday of the month in crontab
@@ -30,7 +31,7 @@ Posts here must, of course, still abide by all subreddit rules other than the no
 
 Comments that are detrimental to discussion (aka circlejerks/shitposting) are subject to removal."""
 
-post = subreddit.submit(title, selftext=content)
+post = subreddit.submit(title, selftext=content, flair_id=flair_id, flair_text='Meta')
 post.disable_inbox_replies()
 post.mod.suggested_sort(sort='new')
 post.mod.distinguish()

@@ -7,6 +7,7 @@ c.read('config.ini')
 
 reddit = praw.Reddit(**c['Auth'])
 subreddit = reddit.subreddit(c['Options']['subreddit'])
+flair_id = c['Options']['flair_weekly_id']
 
 title = datetime.date.today().strftime('Recommendation Tuesdays Megathread - Week of %B %d, %Y')
 content = """
@@ -27,7 +28,7 @@ If you'd like to look through the previous WT! threads to find recommendations o
 Don't have anything particular in mind? [Browse our recommendation wiki](https://www.reddit.com/r/anime/w/recommendations) for some common suggestions.
 """
 
-post = subreddit.submit(title, selftext=content)
+post = subreddit.submit(title, selftext=content, flair_id=flair_id)
 post.disable_inbox_replies()
 post.mod.suggested_sort(sort='new')
 post.mod.distinguish()
