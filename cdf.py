@@ -76,7 +76,7 @@ We will see you all in the new Casual Discussion Fridays thread,
 which you can find [here]({new_cdf.permalink}).
 
 Reminder to keep the new discussion *welcoming* and be mindful of new users.
-Don't take the shitpost too far - but have fun!
+Don't take the shitpost too far — but have fun!
 
 [](#bot-chan)
 ''')
