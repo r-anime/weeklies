@@ -5,6 +5,8 @@ import random
 import sys
 from datetime import datetime, date, timezone, timedelta
 
+from menuupdater import SubredditMenuUpdater
+
 name = 'Casual Discussion Fridays'
 short_name = 'Casual Disc Fridays'
 author = 'AutoModerator'
