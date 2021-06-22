@@ -5,48 +5,41 @@ import random
 import sys
 from datetime import datetime, date, timezone, timedelta
 
+name = 'Casual Discussion Fridays'
+short_name = 'Casual Disc Fridays'
+author = 'AutoModerator'
+config_file = 'config.ini'
+
+# First wait for new thread to go up and update links (standard)
+SubredditMenuUpdater(name=name,
+                     short_name=short_name,
+                     author=author,
+                     config_file=config_file)
+
+# Then the CDF-specific stuff
 c = configparser.ConfigParser()
 c.read('config.ini')
 reddit = praw.Reddit(**c['Auth'])
 subreddit = reddit.subreddit(c['Options']['subreddit'])
-flair_id = c['Options']['flair_weekly_id']
 
-# Step 0: get old CDF
-search_str = 'Casual Discussion Fridays author:AnimeMod'
+# Step 0: get new and old CDF
+search_str = f'{title} author:{author} OR author:AnimeMod'.lower()
 cdfs = subreddit.search(search_str, sort='new')
+
 while True:
-    old_cdf = next(cdfs)
+    cdf = next(cdfs)
     created_ts = datetime.fromtimestamp(old_cdf.created_utc, timezone.utc)
-    if created_ts < datetime.now(timezone.utc) - timedelta(days=6):
+    if created_ts > datetime.now(timezone.utc) - timedelta(days=1): # today
+        new_cdf = cdf
+    elif created_ts < datetime.now(timezone.utc) - timedelta(days=6): # last week
+        old_cdf = cdf
         break
 
+print(f'Found new CDF id {new_cdf.id} "{new_cdf.title}"')
 print(f'Found old CDF id {old_cdf.id} "{old_cdf.title}"')
 
-# Step 1: Create new CDF
-title = date.today().strftime('Casual Discussion Fridays - Week of %B %d, %Y')
-content = """
-This is a weekly thread to get to know /r/anime's community. Talk about your day-to-day life, share your hobbies, or make small talk with your fellow anime fans. The thread is active all week long so hang around even when it's not on the front page!
 
-Although this is a place for off-topic discussion, there are a few rules to keep in mind:
-
-1. Be courteous and respectful of other users.
-
-2. Discussion of religion, politics, depression, and other similar topics will be moderated due to their sensitive nature. While we encourage users to talk about their daily lives and get to know others, this thread is not intended for extended discussion of the aforementioned topics or for emotional support. **Do not post content falling in this category in spoiler tags and hover text.** This is a public thread, please do not post content if you believe that it will make people uncomfortable or annoy others.
-
-3. Roleplaying is not allowed. This behaviour is not appropriate as it is obtrusive to uninvolved users.
-
-4. No meta discussion. If you have a meta concern, please raise it in the Monthly Meta Thread and the moderation team would be happy to help.
-
-5. All /r/anime rules, other than the anime-specific requirement, should still be followed.
-"""
-new_cdf = subreddit.submit(title, selftext=content, flair_id=flair_id)
-new_cdf.disable_inbox_replies()
-new_cdf.mod.distinguish()
-new_cdf.mod.sticky()
-
-print(f'Submitted {new_cdf.title}')
-
-# Step 1.5: Notify old CDF that the new CDF is up
+# Step 1: Notify old CDF that the new CDF is up
 notify_comment = old_cdf.reply(f'''
 Hello CDF users! Since it is Friday, the new CDF is now live. Please follow
 [this link]({new_cdf.permalink}) to move on to the new thread.
