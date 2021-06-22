@@ -1,6 +1,6 @@
 # crontab config (to be added to /etc/crontab)
 0  0	* * 5	root	cd /weekly && python3 cdf.py >> cdf.log 2>&1
+0  0	* * 6	root	cd /weekly && python3 nsq.py >> nsq.log 2>&1
 0  0	* * 7 	root	[ $(date +\%d) -le 07 ] && cd /weekly && python3 meta.py >> meta.log 2>&1
 0  0	* * 1	root	cd /weekly && python3 merch.py >> merch.log 2>&1
 0  0	* * 2	root	cd /weekly && python3 recs.py >> recs.log 2>&1
-0  0	* * 7	root	cd /weekly && python3 fanart.py >> fanart.log 2>&1
