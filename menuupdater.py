@@ -58,7 +58,7 @@ class SubredditMenuUpdater:
             post = next(self.subreddit.search(search_str, sort='new'), None)
             if post is not None:
                 post_timestamp = datetime.fromtimestamp(post.created_utc, timezone.utc)
-                if post_timestamp > datetime.now(timezone.utc) - timedelta(days=1):
+                if post_timestamp > datetime.now(timezone.utc) - timedelta(days=6):
                     # guarantees that the post found was created in the past day
                     self._log(f'Post found {post.permalink}')
                     return post
