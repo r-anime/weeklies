@@ -25,12 +25,13 @@ reddit = praw.Reddit(**c['Auth'])
 subreddit = reddit.subreddit(c['Options']['subreddit'])
 
 # Step 0: get new and old CDF
-search_str = f'{title} author:{author} OR author:AnimeMod'.lower()
+search_str = f'{name.lower()} author:{author}'
+print(f'Search query: {search_str}')
 cdfs = subreddit.search(search_str, sort='new')
 
 while True:
     cdf = next(cdfs)
-    created_ts = datetime.fromtimestamp(old_cdf.created_utc, timezone.utc)
+    created_ts = datetime.fromtimestamp(cdf.created_utc, timezone.utc)
     if created_ts > datetime.now(timezone.utc) - timedelta(days=1): # today
         new_cdf = cdf
     elif created_ts < datetime.now(timezone.utc) - timedelta(days=6): # last week
