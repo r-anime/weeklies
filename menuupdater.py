@@ -49,7 +49,7 @@ class SubredditMenuUpdater:
         self.subreddit = self.reddit.subreddit(c['Options']['subreddit'])
 
     def _find_post(self, name, author):
-        search_str = f'{name} author:{author}'.lower()
+        search_str = f'title:"{name}" author:{author}'.lower()
         search_start_time = time.time()
         search_timeout = int(self.config['Options']['search_timeout'])
 
