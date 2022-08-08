@@ -1,12 +1,11 @@
-import praw
 import configparser
 import datetime
 
-from menuupdater import SubredditMenuUpdater
+from menuupdater import SubredditMenuUpdater, get_reddit_instance
 
 c = configparser.ConfigParser()
 c.read('config.ini')
-reddit = praw.Reddit(**c['Auth'])
+reddit = get_reddit_instance(c['Auth'])
 subreddit = reddit.subreddit(c['Options']['subreddit'])
 flair_id = c['Options']['flair_meta_id']
 

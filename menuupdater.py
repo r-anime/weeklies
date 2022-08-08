@@ -45,7 +45,7 @@ class SubredditMenuUpdater:
         c = configparser.ConfigParser()
         c.read(config_file)
         self.config = c
-        self.reddit = praw.Reddit(**c['Auth'])
+        self.reddit = get_reddit_instance(c['Auth'])
         self.subreddit = self.reddit.subreddit(c['Options']['subreddit'])
 
     def _find_post(self, name, author):
@@ -215,3 +215,23 @@ class SubredditMenuUpdater:
         script_time = datetime.now().strftime('%Y-%m-%d %H:%M')
         preamble = f'[{script_name}] ({script_time})'
         print(preamble, message)
+
+
+def get_reddit_instance(config_dict: dict):
+    """
+    Initialize a reddit instance and return it.
+
+    :param config_dict: dict containing necessary values for authenticating
+    :return: reddit instance
+    """
+
+    auth_dict = {**config_dict}
+    password = config_dict["password"]
+    totp_secret = config_dict.get("totp_secret")
+
+    if totp_secret:
+        import mintotp
+        auth_dict["password"] = f"{password}:{mintotp.totp(totp_secret)}"
+
+    reddit_instance = praw.Reddit(**auth_dict)
+    return reddit_instance

@@ -1,11 +1,10 @@
-import praw
 import configparser
 import time
 import random
 import sys
 from datetime import datetime, date, timezone, timedelta
 
-from menuupdater import SubredditMenuUpdater
+from menuupdater import SubredditMenuUpdater, get_reddit_instance
 
 name = 'Casual Discussion Fridays'
 short_name = 'Casual Disc Fridays'
@@ -21,7 +20,7 @@ SubredditMenuUpdater(name=name,
 # Then the CDF-specific stuff
 c = configparser.ConfigParser()
 c.read('config.ini')
-reddit = praw.Reddit(**c['Auth'])
+reddit = get_reddit_instance(c['Auth'])
 subreddit = reddit.subreddit(c['Options']['subreddit'])
 
 # Step 0: get new and old CDF

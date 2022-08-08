@@ -1,9 +1,8 @@
-import praw
 import configparser
 import re
 from datetime import datetime, timezone, timedelta
 
-from menuupdater import SubredditMenuUpdater
+from menuupdater import SubredditMenuUpdater, get_reddit_instance
 
 name = 'Anime Questions, Recommendations, and Discussion'
 short_name = 'Daily Megathread'
@@ -19,7 +18,7 @@ SubredditMenuUpdater(name=name,
 # Daily Thread Specific Stuff
 c = configparser.ConfigParser()
 c.read('config.ini')
-reddit = praw.Reddit(**c['Auth'])
+reddit = get_reddit_instance(c['Auth'])
 subreddit = reddit.subreddit(c['Options']['subreddit'])
 
 # Step 0: get new and old Daily
