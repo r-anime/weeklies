@@ -1,6 +1,6 @@
 from menuupdater import SubredditMenuUpdater
 
-SubredditMenuUpdater(name='Thursday Anime Discussion',
-                     short_name='Thursday Anime Disc',
+SubredditMenuUpdater(name='Anime of the Week',
+                     short_name='Anime of the Week',
                      author='AnimeMod',
                      config_file='config.ini')
