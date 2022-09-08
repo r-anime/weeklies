@@ -66,7 +66,6 @@ except:
 
 if sticky_comment_text:
     new_sticky_comment = new_daily.reply(sticky_comment_text)
-    new_sticky_comment.disable_inbox_replies()
     new_sticky_comment.mod.distinguish(sticky=True)
     print('Posted sticky comment to new thread')
 else:
