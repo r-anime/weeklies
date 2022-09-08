@@ -55,6 +55,21 @@ print(f'Posted notify comment {notify_comment.id} in old daily')
 # Step 2: Update old daily body with link to new one
 old_daily.edit(body=re.sub(r"\[Next Thread »]\(.*?\)", f"[Next Thread »]({new_daily.permalink})", old_daily.selftext))
 
-print(f'Updated old daily body with link to new')
+print('Updated old daily body with link to new')
+
+# Step 3: Add sticky comment for the new thread (if it exists)
+sticky_comment_wiki = subreddit.wiki["daily_thread/sticky_comment"]
+try:
+    sticky_comment_text = sticky_comment_wiki.content_md.strip()
+except:
+    sticky_comment_text = ""
+
+if sticky_comment_text:
+    new_sticky_comment = new_daily.reply(sticky_comment_text)
+    new_sticky_comment.disable_inbox_replies()
+    new_sticky_comment.mod.distinguish(sticky=True)
+    print('Posted sticky comment to new thread')
+else:
+    print('No sticky comment for new thread')
 
 print('Job complete. Goodbye.')
