@@ -71,4 +71,9 @@ if sticky_comment_text:
 else:
     print('No sticky comment for new thread')
 
+# Step 4: Rewrite redd.it links to other posts to more friendly /comments/<id> format
+new_daily.edit(body=re.sub(r"https?://(?:www\.)?redd\.it/(\w+)/?", "/comments/\1", new_daily.selftext))
+
+print('Updated new daily body with relative links to posts')
+
 print('Job complete. Goodbye.')
