@@ -55,7 +55,10 @@ undesirable behavior. Excessive violations will result in sanctions.
 notify_comment.disable_inbox_replies()
 notify_comment.mod.distinguish()
 
+# Step 1.5 Sort new CDF by new
+print("Setting new CDF thread sorting to 'new'")
 print(f'Posted notify comment {notify_comment.id} in old CDF')
+new_cdf.mod.suggested_sort(sort='new')
 
 # Step 2: Lock old CDF
 print('Going to sleep for 3600 seconds...')
@@ -79,13 +82,4 @@ last_comment.disable_inbox_replies()
 last_comment.mod.distinguish(sticky=True)
 
 print(f'Last comment {last_comment.id} posted')
-
-# Step 3: sort new CDF by new
-print('Going to sleep for 3600 seconds...')
-sys.stdout.flush()
-time.sleep(3600)
-
-print("Waking up. Setting new CDF thread sorting to 'new'")
-new_cdf.mod.suggested_sort(sort='new')
-
 print('Job complete. Goodbye.')

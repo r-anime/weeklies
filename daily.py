@@ -76,4 +76,7 @@ new_daily.edit(body=re.sub(r"https?://(?:www\.)?redd\.it/(\w+)/?", r"/comments/\
 
 print('Updated new daily body with relative links to posts')
 
+# Step 5: Sort by new (since it's broken on reddit's end right now)
+new_daily.mod.suggested_sort(sort='new')
+
 print('Job complete. Goodbye.')
