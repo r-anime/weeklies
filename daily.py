@@ -71,8 +71,13 @@ if sticky_comment_text:
 else:
     print('No sticky comment for new thread')
 
-# Step 4: Rewrite redd.it links to other posts to more friendly /comments/<id> format
-new_daily.edit(body=re.sub(r"https?://(?:www\.)?redd\.it/(\w+)/?", r"/comments/\g<1>", new_daily.selftext))
+# Step 4: Rewrite links
+original_text = new_daily.selftext
+# Change redd.it/<id> links to relative /comments/<id>
+updated_text = re.sub(r"https?://(?:www\.)?redd\.it/(\w+)/?", r"/comments/\g<1>", original_text)
+# Keep redesign/mobile image embed after edit
+updated_text = re.sub(r"\[(.*?)]\(https://preview\.redd\.it/(\w+)\..*?\)", r'![img](\g<2> "\g<1>")', updated_text)
+new_daily.edit(body=updated_text)
 
 print('Updated new daily body with relative links to posts')
 
