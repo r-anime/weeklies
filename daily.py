@@ -53,7 +53,11 @@ notify_comment.mod.distinguish(sticky=True)
 print(f'Posted notify comment {notify_comment.id} in old daily')
 
 # Step 2: Update old daily body with link to new one
-old_daily.edit(body=re.sub(r"\[Next Thread »]\(.*?\)", f"[Next Thread »]({new_daily.permalink})", old_daily.selftext))
+original_text = old_daily.selftext
+updated_text = re.sub(r"\[Next Thread »]\(.*?\)", f"[Next Thread »]({new_daily.permalink})", original_text)
+# Keep redesign/mobile image embed after edit
+updated_text = re.sub(r"\[(.*?)]\(https://preview\.redd\.it/(\w+)\..*?\)", r'![img](\g<2> "\g<1>")', updated_text)
+old_daily.edit(body=updated_text)
 
 print('Updated old daily body with link to new')
 
